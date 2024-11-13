@@ -1,0 +1,37 @@
+{% extends "master.html" %}
+
+{% block title %}
+Details about {{ mybook.book_name }} by {{ mybook.book_author }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="welcome-title">{{ mybook.book_name }} by {{ mybook.book_author }}</h1>
+    
+    <div class="detail-item">
+        <span class="label">Book ID:</span>
+        <span class="value"><strong>{{ mybook.book_id }}</strong></span>
+    </div>
+    <div class="detail-item">
+        <span class="label">Book Name:</span>
+        <span class="value"><strong>{{ mybook.book_name }}</strong></span>
+    </div>
+    <div class="detail-item">
+        <span class="label">Book Author:</span>
+        <span class="value"><strong>{{ mybook.book_author }}</strong></span>
+    </div>
+    <div class="detail-item">
+        <span class="label">Date Publish:</span>
+        <span class="value"><strong>{{ mybook.date_publish }}</strong></span>
+    </div>
+
+    <div class="button-container">
+        <a href="{% url 'edit_book' mybook.id %}" class="button">Edit</a>
+        <a href="{% url 'delete_book' mybook.id %}" class="button button-delete" onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
+    </div>
+
+    <p class="button-container">
+        <a href="{% url 'books' %}" class="button">Back to Book Lists</a>
+    </p>
+</div>
+{% endblock %}

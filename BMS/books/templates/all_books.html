@@ -1,0 +1,37 @@
+{% extends "master.html" %}
+
+{% block title %}
+Book List
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="welcome-title">Book Lists:</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Book Name</th>
+                <th>Book Author</th>
+                <th>Date Published</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in mybooks %}
+            <tr>
+                <td>{{ x.book_id }}</td> <!-- Display Book ID -->
+                <td><a href="{% url 'details' x.id %}">{{ x.book_name }}</a></td>
+                <td>{{ x.book_author }}</td>
+                <td>{{ x.date_publish }}</td> <!-- Display Date Published -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <a href="{% url 'add_book' %}" class="button">Add Another Book</a>
+        <a href="/" class="button">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
